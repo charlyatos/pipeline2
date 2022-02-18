@@ -154,30 +154,30 @@ class UserControllerTest {
                 .andExpect(content().json(body,false));
     }
 
-//    @Test
-//    @Description("Delete oneUserDTO Asynchronously")
-//    public void deleteUserDTOtest()throws Exception{
-//        given(usrSrv.deleteUser(Mockito.anyLong()))
-//                .willReturn(CompletableFuture.completedFuture(true));
-//
-//        ObjectMapper objectMapper = new ObjectMapper();
-//
-//        String body = objectMapper.writeValueAsString(true);
-//
-//
-//        MvcResult result = this.mockMvc.perform(delete("http://localhost:8080/api/v1/users/44")
-//                        .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).content(body))
-//                .andExpect(request().asyncStarted())
-//                .andExpect(status().is2xxSuccessful())
-//                .andReturn();
-//
-//
-//        this.mockMvc.perform(asyncDispatch(result))
-//                .andDo(print())
-//                .andExpect(status().isOk());
-//
-//
-//    }
+    @Test
+    @Description("Delete oneUserDTO Asynchronously")
+    public void deleteUserDTOtest()throws Exception{
+        given(usrSrv.deleteUser(Mockito.anyLong()))
+                .willReturn(CompletableFuture.completedFuture(true));
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String body = objectMapper.writeValueAsString(true);
+
+
+        MvcResult result = this.mockMvc.perform(delete("http://localhost:8080/api/v1/users/44")
+                        .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).content(body))
+                .andExpect(request().asyncStarted())
+                .andExpect(status().is2xxSuccessful())
+                .andReturn();
+
+
+        this.mockMvc.perform(asyncDispatch(result))
+                .andDo(print())
+                .andExpect(status().isOk());
+
+
+    }
 
 
 
