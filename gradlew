@@ -233,4 +233,4 @@ eval "set -- $(
 
 exec "$JAVACMD" "$@"
 
-#
+# permissions
