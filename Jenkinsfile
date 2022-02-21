@@ -29,8 +29,9 @@ pipeline {
 		        sh "./gradlew test"
             }
             post{
-                junit '**/build/test-results/test/TEST-com.alan.finalAPIconsultorios.controller.UserControllerTest.xml'
-
+                always{
+                    junit '**/build/test-results/test/TEST-com.alan.finalAPIconsultorios.controller.UserControllerTest.xml'
+                }
             }
 
         }
