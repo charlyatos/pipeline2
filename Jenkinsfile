@@ -3,6 +3,13 @@ pipeline {
     triggers {
         pollSCM('* * * * *')
     }
+    environment {
+        // General Variables for Pipeline
+//         PROJECT_ROOT = 'raiz del directorio'
+//         EMAIL_ADDRESS = 'correo@gmail.com'
+        REGISTRY = 'alancho01/docker-api-consultorios'
+//         BUILD_NUMBER = 'Variable de entorno propia de jenkins'
+    }
     stages {
         stage("Compile") {
             steps {
@@ -39,7 +46,7 @@ pipeline {
         }
         stage('Build docker-image') {
         steps {
-          sh "cd ./${PROJECT_ROOT};docker build -t ${REGISTRY}:${BUILD_NUMBER} . "
+          sh "docker build -t ${REGISTRY}:${BUILD_NUMBER}"
         }
       }
       stage('Deploy docker-image') {
