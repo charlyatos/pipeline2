@@ -31,6 +31,7 @@ pipeline {
             post{
                 always{
                     junit '**/build/test-results/test/TEST-com.alan.finalAPIconsultorios.controller.UserControllerTest.xml'
+
                 }
             }
 
