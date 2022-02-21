@@ -16,11 +16,11 @@ pipeline {
                 sh "./gradlew compileJava"
             }
         }
-	stage("Clean"){
-            steps {
-                sh "./gradlew clean"
-            }	
-	}
+//         stage("Clean"){
+//                 steps {
+//                     sh "./gradlew clean"
+//                 }
+//         }
         stage("Unit test") {
             steps {
 		sh "./gradlew test"
