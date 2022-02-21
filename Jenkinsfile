@@ -1,3 +1,11 @@
+def qualityGateValidation(qg) {
+  if (qg.status != 'OK') {
+    emailext body: "WARNING: Code coverage is lower than 80% in Pipeline ${BUILD_NUMBER}", subject: 'Error Sonar Scan,   Quality Gate', to: "${EMAIL_ADDRESS}"
+    return true
+  }
+  emailext body: "PIPELINE FINISHED: Code coverage is higher than 80%  in Pipeline ${BUILD_NUMBER} - SUCCESS", subject: 'Info - Correct Pipeline', to: "${EMAIL_ADDRESS}"
+  return false
+}
 pipeline {
     agent any
     triggers {
@@ -6,7 +14,7 @@ pipeline {
     environment {
         // General Variables for Pipeline
 //         PROJECT_ROOT = 'raiz del directorio'
-//         EMAIL_ADDRESS = 'correo@gmail.com'
+        EMAIL_ADDRESS = 'soymuygrandioso@gmail.com'
         REGISTRY = 'alancho01/docker-api-consultorios'
 //         BUILD_NUMBER = 'Variable de entorno propia de jenkins'
     }
@@ -16,15 +24,15 @@ pipeline {
                 sh "./gradlew compileJava"
             }
         }
-//         stage("Clean"){
-//                 steps {
-//                     sh "./gradlew clean"
-//                 }
-//         }
         stage("Unit test") {
             steps {
-		sh "./gradlew test"
+		        sh "./gradlew test"
             }
+            post{
+                junit '**/build/test-results/test/TEST-com.alan.finalAPIconsultorios.controller.UserControllerTest.xml'
+
+            }
+
         }
         stage("Code coverage") {
             steps {
