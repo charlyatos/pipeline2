@@ -69,7 +69,7 @@ public class UserServiceImpl extends GenericServiceImpl<User,Long> implements Us
         existingUser.setLastName(user.getLastName());
         existingUser.setSurname(user.getSurname());
         existingUser.setUserModifier(user.getUserModifier());
-
+        System.out.println("Print de Prueba");
         return CompletableFuture.completedFuture(userRepository.save(existingUser));
     }
 
