@@ -14,8 +14,8 @@ pipeline {
     environment {
         // General Variables for Pipeline
 //         PROJECT_ROOT = 'raiz del directorio'
-        EMAIL_ADDRESS = 'soymuygrandioso@gmail.com'
-        REGISTRY = 'alancho01/docker-api-consultorios'
+        EMAIL_ADDRESS = 'carlos-enrique.rojo@atos.net
+        REGISTRY = 'charlyatos/pipelinedemo'
 //         BUILD_NUMBER = 'Variable de entorno propia de jenkins'
     }
     stages {
